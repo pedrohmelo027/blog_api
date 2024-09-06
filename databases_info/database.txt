@@ -1,0 +1,41 @@
+Tabelas do banco de dados existente no projeto
+
+    Posts
+        postId (INT, PRIMARY KEY, AUTO_INCREMENT)
+        title (VARCHAR(255), NOT NULL)
+        body (TEXT, NOT NULL)
+        publication_date (DATETIME, NOT NULL)
+        author_id (INT, FOREIGN KEY referenciando Users.user_id)
+
+    Categories
+        categoryId (INT, PRIMARY KEY, AUTO_INCREMENT)
+        name (VARCHAR(100), NOT NULL)
+
+    Tags
+        tagId (INT, PRIMARY KEY, AUTO_INCREMENT)
+        name (VARCHAR(100), NOT NULL)
+
+    PostCategories (Tabela de relação muitos-para-muitos entre Posts e Categories)
+        postId (INT, FOREIGN KEY referenciando Posts.post_id)
+        category_id (INT, FOREIGN KEY referenciando Categories.category_id)
+        PRIMARY KEY (post_id, category_id)
+
+    PostTags (Tabela de relação muitos-para-muitos entre Posts e Tags)
+        postId (INT, FOREIGN KEY referenciando Posts.post_id)
+        tagId (INT, FOREIGN KEY referenciando Tags.tag_id)
+        PRIMARY KEY (post_id, tag_id)
+
+    Users
+        userId (INT, PRIMARY KEY, AUTO_INCREMENT)
+        name (VARCHAR(100), NOT NULL, UNIQUE)
+        email (VARCHAR(255), NOT NULL, UNIQUE)
+        password(VARCHAR(255), NOT NULL)
+        cpf(VARCHAR(255), NOT NULL)
+        phone(VARCHAR(255), NOT NULL)
+
+
+***************************************************
+
+Tags: sera algo escrito, onde a pessoa podera escrever
+
+e Categorias: algo que ja vem predefinido no sistema
